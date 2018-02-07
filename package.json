@@ -1,0 +1,32 @@
+{
+  "name": "@straw-hat/npm-packager",
+  "version": "0.0.1",
+  "description": "Enhance npm commands",
+  "author": "Straw Hat Team <engineers@straw-hat-llc.com>",
+  "license": "MIT",
+  "keywords": [
+    "packager",
+    "cli"
+  ],
+  "main": "bin/npm-packager.js",
+  "bin": {
+    "npm-packager": "bin/npm-packager.js"
+  },
+  "directories": {
+    "lib": "src",
+    "bin": "bin"
+  },
+  "scripts": {
+    "lint": "standard",
+    "lint:fix": "standard --fix"
+  },
+  "dependencies": {
+    "commander": "^2.14.0",
+    "execa": "^0.9.0",
+    "lodash": "^4.17.5",
+    "npmlog": "^4.1.2"
+  },
+  "devDependencies": {
+    "standard": "^10.0.3"
+  }
+}

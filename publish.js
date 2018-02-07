@@ -1,0 +1,26 @@
+const log = require('npmlog')
+const execa = require('execa')
+
+const Package = require('./packager')
+
+const PublishCommand = (args = {}) => {
+  const {
+    tag,
+    access
+  } = args
+
+  const distDir = Package.preparePackage()
+  const cmdArgs = ['publish', distDir]
+
+  if (tag) cmdArgs.concat(['--tag', tag])
+  if (access) cmdArgs.concat(['--access', access])
+
+  try {
+    const r = execa.sync('npm', cmdArgs).stdout
+    log.info(r)
+  } catch (e) {
+    log.error(e.message)
+  }
+}
+
+module.exports = PublishCommand
