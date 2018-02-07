@@ -16,7 +16,8 @@ const PublishCommand = (args = {}) => {
 
   try {
     const message = execa.sync('npm', cmdArgs).stdout
-    log.info(`published ${message}`)
+    const cleanMessage = message.replace('+ ', '')
+    log.info(`published ${cleanMessage}`)
   } catch (e) {
     log.error(e.message)
   }
