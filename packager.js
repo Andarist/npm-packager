@@ -14,19 +14,24 @@ const getDistDir = (pkg) => {
   return path.join(process.cwd(), distDir)
 }
 
-const createPackageConfig = (pkg, dir) => {
-  const relativePath = path.relative(process.cwd(), dir)
-  const packageFile = path.join(dir, 'package.json')
+const createPackageConfig = (pkg, packageFile) => {
+  const relativePath = path.relative(process.cwd(), packageFile)
   const fileData = JSON.stringify(pkg, undefined, 2)
-  log.info(`creating package.json on ${relativePath}`)
+
+  log.info(`creating ${relativePath}`)
   return fs.writeFileSync(packageFile, fileData)
 }
 
 const preparePackage = () => {
   const pkg = readPackageConfig()
   const distDir = getDistDir(pkg)
-  createPackageConfig(pkg, distDir)
-  return distDir
+  const packageFile = path.join(distDir, 'package.json')
+
+  if(!fs.existsSync(packageFile)) createPackageConfig(pkg, packageFile)
+
+  return {
+    distDir
+  }
 }
 
 module.exports = {

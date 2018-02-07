@@ -8,16 +8,15 @@ const PublishCommand = (args = {}) => {
     tag,
     access
   } = args
-
-  const distDir = Package.preparePackage()
+  const { distDir } = Package.preparePackage()
   const cmdArgs = ['publish', distDir]
 
   if (tag) cmdArgs.concat(['--tag', tag])
   if (access) cmdArgs.concat(['--access', access])
 
   try {
-    const r = execa.sync('npm', cmdArgs).stdout
-    log.info(r)
+    const message = execa.sync('npm', cmdArgs).stdout
+    log.info(message)
   } catch (e) {
     log.error(e.message)
   }
