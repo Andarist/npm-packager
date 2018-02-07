@@ -25,7 +25,9 @@
     "copy": "^0.3.1",
     "execa": "^0.9.0",
     "lodash": "^4.17.5",
-    "npmlog": "^4.1.2"
+    "npm-packlist": "^1.1.10",
+    "npmlog": "^4.1.2",
+    "path-is-inside": "^1.0.2"
   },
   "devDependencies": {
     "standard": "^10.0.3"
