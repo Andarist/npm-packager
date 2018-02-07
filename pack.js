@@ -3,8 +3,8 @@ const execa = require('execa')
 
 const Package = require('./packager')
 
-const PackCommand = (args = {}) => {
-  const { distDir } = Package.preparePackage()
+const PackCommand = async (args = {}) => {
+  const { distDir } = await Package.preparePackage()
   const cmdArgs = ['pack', distDir]
 
   try {

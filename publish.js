@@ -3,12 +3,13 @@ const execa = require('execa')
 
 const Package = require('./packager')
 
-const PublishCommand = (args = {}) => {
+const PublishCommand = async (args = {}) => {
   const {
     tag,
     access
   } = args
-  const { distDir } = Package.preparePackage()
+
+  const { distDir } = await Package.preparePackage()
   const cmdArgs = ['publish', distDir]
 
   if (tag) cmdArgs.concat(['--tag', tag])
