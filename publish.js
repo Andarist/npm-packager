@@ -16,7 +16,7 @@ const PublishCommand = (args = {}) => {
 
   try {
     const message = execa.sync('npm', cmdArgs).stdout
-    log.info(message)
+    log.info(`published ${message}`)
   } catch (e) {
     log.error(e.message)
   }

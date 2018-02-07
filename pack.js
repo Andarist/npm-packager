@@ -9,7 +9,7 @@ const PackCommand = (args = {}) => {
 
   try {
     const message = execa.sync('npm', cmdArgs).stdout
-    log.info(`creating ${message}`)
+    log.info(`created ${message}`)
   } catch (e) {
     log.error(e.message)
   }
